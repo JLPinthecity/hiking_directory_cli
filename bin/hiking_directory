@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
+require_relative "../lib/hiking_directory"
+
 HikingDirectory::CLI.new.call
