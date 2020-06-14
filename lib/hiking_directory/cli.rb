@@ -1,9 +1,10 @@
 class HikingDirectory::CLI 
   
   def call
-    puts "Welcome to the Hiking Project Directory!"
+    puts "\nWelcome to the Hiking Project Directory!\n"
     get_states
     list_states
+    get_user_state
   end
   
   def get_states
@@ -11,8 +12,24 @@ class HikingDirectory::CLI
   end
   
   def list_states
+    puts "Please pick the state you're interested in."
     @states.each.with_index(1) do |state, index|
       puts "#{index}. #{state}"
     end
+    puts "Enter the number that corresponds with your chosen state."
   end
+  
+  def get_user_state
+    chosen_state = gets.strip
+  end
+  
+  def state_valid? 
+    #if input is an integer and between 1 - 51
+  
+  end
+  
+  
+  
+  
+  
 end
