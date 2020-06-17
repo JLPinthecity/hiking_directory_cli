@@ -21,11 +21,13 @@ class HikingDirectory::CLI
   
   def get_user_state
     chosen_state = gets.strip
+    if state_valid?(chosen_state)
+      chosen_state.to_i
+    end
   end
   
-  def state_valid? 
-    #if input is an integer and between 1 - 51
-  
+  def state_valid?(input)
+    input.between?(1, 51)
   end
   
   
