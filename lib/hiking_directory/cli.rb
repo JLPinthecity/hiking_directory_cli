@@ -20,16 +20,23 @@ class HikingDirectory::CLI
   end
   
   def get_user_state
-    chosen_state = gets.strip
-    if state_valid?(chosen_state)
-      chosen_state.to_i
-    end
+    chosen_state = gets.strip.to_i
+    show_hikes_for(chosen_state) if state_valid?(chosen_state, @states)
   end
   
-  def state_valid?(input)
-    input.between?(1, 51)
+  def state_valid?(input, data)
+    input.to_i > data.length && input.to_i > 0 
   end
   
+  def show_hikes_for(chosen_state)
+    state = @states[chosen_state - 1]
+    puts "Here are the hikes in your #{state}:"
+    #HikingDirectory::Hike.all.each.with_index(1) do | hike, index |
+    #  puts "#{index}". "#{hike.name}"
+    #end
+    
+    #get_hike_details
+  end
   
   
   

@@ -1,0 +1,4 @@
+class HikingDirectory::Hike
+
+
+end
