@@ -1,14 +1,14 @@
 class HikingDirectory::CLI 
   
   def call
-    puts "\nWelcome to the Hiking Project Directory!\n"
+    puts "\nWelcome to the Hiking Trails Directory!\n"
     get_states
     list_states
     get_user_state
   end
   
   def get_states
-    @states = ["maine", "new york", "new jersey"]
+    @states = HikingDirectory::State.all
   end
   
   def list_states
@@ -21,10 +21,10 @@ class HikingDirectory::CLI
   
   def get_user_state
     chosen_state = gets.strip.to_i
-    show_hikes_for(chosen_state) if state_valid?(chosen_state, @states)
+    show_hikes_for(chosen_state) if valid?(chosen_state, @states)
   end
   
-  def state_valid?(input, data)
+  def valid?(input, data)
     input.to_i > data.length && input.to_i > 0 
   end
   
