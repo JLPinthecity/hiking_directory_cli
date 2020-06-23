@@ -8,16 +8,13 @@ class HikingDirectory::CLI
   end
   
   def get_states
-    HikingDirectory::State.new("New York")
-    HikingDirectory::State.new("Maine")
     @states = HikingDirectory::State.all
-    binding.pry
   end
   
   def list_states
     puts "Please pick the state you're interested in."
     @states.each.with_index(1) do |state, index|
-      puts "#{index}. #{state}"
+      puts "#{index}. #{state.name}"
     end
     puts "Enter the number that corresponds with your chosen state."
   end

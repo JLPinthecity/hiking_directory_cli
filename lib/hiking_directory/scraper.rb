@@ -1,0 +1,3 @@
+class HikingDirectory::Scraper
+  
+end
