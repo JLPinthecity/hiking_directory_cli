@@ -8,7 +8,10 @@ class HikingDirectory::CLI
   end
   
   def get_states
+    HikingDirectory::State.new("New York")
+    HikingDirectory::State.new("Maine")
     @states = HikingDirectory::State.all
+    binding.pry
   end
   
   def list_states
