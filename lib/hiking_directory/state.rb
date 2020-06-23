@@ -13,6 +13,7 @@ class HikingDirectory::State
   end
   
   def self.all
+    HikingDirectory::Scraper.scrape_states if @@all.empty?
     @@all
   end
   
