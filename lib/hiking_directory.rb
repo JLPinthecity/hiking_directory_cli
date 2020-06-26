@@ -5,6 +5,7 @@ require_relative "./hiking_directory/scraper"
 
 require 'pry'
 require 'nokogiri'
+require 'open-uri'
 
 module HikingDirectory
   class Error < StandardError; end
