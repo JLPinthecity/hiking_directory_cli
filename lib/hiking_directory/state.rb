@@ -17,6 +17,5 @@ class HikingDirectory::State
     HikingDirectory::Scraper.scrape_states if @@all.empty?
   end
   
-  
 
 end
