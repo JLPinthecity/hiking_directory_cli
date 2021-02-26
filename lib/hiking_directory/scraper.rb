@@ -13,12 +13,11 @@ class HikingDirectory::Scraper
   
   def self.scrape_state_for_regions(state)
     doc = Nokogiri::HTML(open("#{state.url}"))
-    regions = doc.css("div#subareas div.area div.link")
+    regions = doc.css("div#subareas div.area")
       regions.each do |region|
-        name = region.css("div.link").text
-        url = region.css("a").attr("href")
-        number = region.css("div.trails").text
-            binding.pry
+        region_name = region.css("div.link").text
+        region_url = region.css("a").attr("href").value
+        number_of_trails = region.css("div.trails").text
       end
   end
 
