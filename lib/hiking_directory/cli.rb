@@ -17,15 +17,17 @@ class HikingDirectory::CLI
       puts "#{index}. #{state.name}"
     end
     puts "Enter the number that corresponds with your chosen state."
+    get_user_state
   end
   
   def get_user_state
     chosen_state = gets.strip.to_i
       if valid_input(chosen_state, @states)
-        show_hikes_for(chosen_state) 
+        show_regions_in(chosen_state) 
       else 
         puts "Invalid option, please choose state from list."
         list_states
+      end
   end
   
   def valid_input(input, data)
@@ -33,14 +35,11 @@ class HikingDirectory::CLI
     input <= data.length && input > 0 
   end
   
-  def show_hikes_for(chosen_state)
+  def show_regions_in(chosen_state)
     state = @states[chosen_state - 1]
+    HikingDirectory::Scraper.scrape_state_for_regions(state)
     puts "Pick a region in #{state.name}:"
-    #HikingDirectory::Hike.all.each.with_index(1) do | hike, index |
-    #  puts "#{index}". "#{hike.name}"
-    #end
-    
-    #get_hike_details
+   
     
   end
   
