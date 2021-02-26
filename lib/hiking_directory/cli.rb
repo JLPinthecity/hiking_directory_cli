@@ -21,11 +21,16 @@ class HikingDirectory::CLI
   
   def get_user_state
     chosen_state = gets.strip.to_i
-    show_hikes_for(chosen_state) if valid_input(chosen_state, @states)
+      if valid_input(chosen_state, @states)
+        show_hikes_for(chosen_state) 
+      else 
+        puts "Invalid option, please choose state from list."
+        list_states
   end
   
   def valid_input(input, data)
-    input.to_i <= data.length && input.to_i > 0 
+    input = input.to_i
+    input <= data.length && input > 0 
   end
   
   def show_hikes_for(chosen_state)
