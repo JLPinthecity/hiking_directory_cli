@@ -22,10 +22,5 @@ class HikingDirectory::Scraper
       end
   end
   
-  def self.scrape_region_page_for_hikes(region)
-    
-  
-  
 
-    
 end
