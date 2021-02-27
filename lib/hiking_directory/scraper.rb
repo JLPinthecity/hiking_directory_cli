@@ -32,6 +32,7 @@ class HikingDirectory::Scraper
         length = hike.css("div.card-body span.imperial").text.split(",")
         mileage = lengths[0]
         ascent = lengths[1]
+        HikingDirectory::Hike(city, length, mileage, ascent)
         binding.pry
       end
   end

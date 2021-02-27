@@ -17,10 +17,10 @@ class HikingDirectory::CLI
   end
   
   def hikes
-    @hikes = HikingDirectory::Region.all
+    @hikes = HikingDirectory::Hike.all
   end
   
-  def list_states
+  def list_states #works
     puts "Please pick the state you're interested in."
       @states.each.with_index(1) do |state, index|
         puts "#{index}. #{state.name}"
@@ -30,7 +30,7 @@ class HikingDirectory::CLI
     regions.clear #delete regions collection w/states list
   end
   
-  def get_user_state
+  def get_user_state #works
     chosen_state = gets.strip.to_i
       if valid_input(chosen_state, @states)
         show_regions_in(chosen_state) 
@@ -40,29 +40,24 @@ class HikingDirectory::CLI
       end
   end
   
-  def valid_input(input, data)
+  def valid_input(input, data) #works
     input = input.to_i
     input <= data.length && input > 0 
   end
   
-  def show_regions_in(chosen_state)
+  def show_regions_in(chosen_state) #works
     state = @states[chosen_state - 1]
     HikingDirectory::Scraper.scrape_state_for_regions(state)
       regions.each.with_index(1) do |region, index|
         puts "#{index}. #{region.region_name} - #{region.number_of_trails}"
       end
       puts "Please pick the region to see trails in your area."
-      get_user_region
-  end
-  
-  def get_user_region
-    chosen_region = gets.strip.to_i
-      if valid_input(chosen_region, @regions)
-        show_hikes_in(chosen_region) 
-        binding.pry
-      else 
-        puts "Invalid option, please choose state from list."
-        show_regions_in(chosen_state)
+      chosen_region = gets.strip.to_i
+        if valid_input(chosen_region, @regions)
+          show_hikes_in(chosen_region) 
+        else 
+          puts "Invalid option, please choose state from list."
+        list_states
       end
   end
   

@@ -3,6 +3,7 @@ require_relative "./hiking_directory/cli"
 require_relative "./hiking_directory/state"
 require_relative "./hiking_directory/scraper"
 require_relative "./hiking_directory/region"
+require_relative "./hiking_directory/hike"
 
 require 'pry'
 require 'nokogiri'
