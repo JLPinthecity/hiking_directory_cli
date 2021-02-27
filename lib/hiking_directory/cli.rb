@@ -52,7 +52,7 @@ class HikingDirectory::CLI
   
   def get_user_region
     chosen_region = gets.strip.to_i
-      if valid_input(chosen_state, @regions)
+      if valid_input(chosen_region, @regions)
         show_hikes_in(chosen_region) 
       else 
         puts "Invalid option, please choose state from list."

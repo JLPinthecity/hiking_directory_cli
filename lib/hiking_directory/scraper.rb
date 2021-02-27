@@ -4,7 +4,7 @@ class HikingDirectory::Scraper
   def self.scrape_states
     doc = Nokogiri::HTML(open("https://www.hikingproject.com/directory/areas"))
     states_cards = doc.css("div.row.areas div.card.area-card")
-      states_cards.collect do |thing|
+      states_cards.each do |thing|
         name = thing.css("h3.dont-shrink.serif").text
         url = thing.css("a").attr("href").value
         HikingDirectory::State.new(name, url)
@@ -14,7 +14,7 @@ class HikingDirectory::Scraper
   def self.scrape_state_for_regions(state)
     doc = Nokogiri::HTML(open("#{state.url}"))
     regions = doc.css("div#subareas div.area")
-      regions.each_with_index do |region, index|
+      regions.each do |region|
         region_name = region.css("div.link").text
         region_url = region.css("a").attr("href").value
         number_of_trails = region.css("div.trails").text
@@ -22,5 +22,19 @@ class HikingDirectory::Scraper
       end
   end
   
+  def self.scrape_hikes_in(region)
+    doc = Nokogiri::HTML(open("#{region.url}"))
+    hikes = doc.css("div.row div.col-lg-3.col-md-4.col-sm-6.card-container")
+      hikes.each do |hike|
+        link = hike.css("a").attr("href")
+        name = hike.css("div.card-body h4.card-title.text-black.text-truncate").text
+        city = hike.css("div.text-muted.text-truncate span.city-state").text
+        length = hike.css("div.card-body span.imperial").text.split(",")
+        mileage = lengths[0]
+        ascent = lengths[1]
+        binding.pry
+      end
+  end
+
 
 end
