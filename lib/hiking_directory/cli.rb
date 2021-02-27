@@ -19,6 +19,7 @@ class HikingDirectory::CLI
     end
     puts "Enter the number that corresponds with your chosen state."
     get_user_state
+    @regions = HikingDirectory::Region.delete
   end
   
   def get_user_state

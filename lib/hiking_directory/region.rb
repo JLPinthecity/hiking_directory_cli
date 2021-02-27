@@ -18,7 +18,7 @@ class HikingDirectory::Region
     @@all
   end
   
-  def delete
+  def self.delete
     all.clear 
   end 
 
