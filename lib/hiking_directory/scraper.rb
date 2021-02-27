@@ -24,15 +24,11 @@ class HikingDirectory::Scraper
   
   def self.scrape_hikes_in(region)
     doc = Nokogiri::HTML(open("#{region.region_url}"))
-    hikes = doc.css("div.row div.col-lg-3.col-md-4.col-sm-6.card-container")
-      binding.pry
+    hikes = doc.css("div.mb-3 div.row div.col-md-4.col-sm-6.card-container")
       hikes.each do |hike|
-        link = hike.css("a").attr("href")
+        link = hike.css("a").attr("href").value
         name = hike.css("div.card-body h4.card-title.text-black.text-truncate").text
         city = hike.css("div.text-muted.text-truncate span.city-state").text
-        length = hike.css("div.card-body span.imperial").text.split(",")
-        mileage = lengths[0]
-        ascent = lengths[1]
         HikingDirectory::Hike(city, length, mileage, ascent)
       end
   end

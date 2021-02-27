@@ -1,13 +1,12 @@
 class HikingDirectory::Hike
-  attr_accessor :city, :length, :mileage, :ascent
+  attr_accessor :name, :city, :link
   
   @@all = []
   
-  def initialize(city, length, mileage, ascent)
-    @city = city 
-    @length = length
-    @mileage = mileage
-    @ascent = ascent
+  def initialize(name, city, link)
+   @name = name
+   @city = city
+   @link = link 
     save
   end
   
