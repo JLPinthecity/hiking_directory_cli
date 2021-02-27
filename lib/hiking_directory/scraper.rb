@@ -19,9 +19,13 @@ class HikingDirectory::Scraper
         region_url = region.css("a").attr("href").value
         number_of_trails = region.css("div.trails").text
         HikingDirectory::Region.new(region_name, region_url, number_of_trails)
-      
       end
   end
+  
+  def self.scrape_region_page_for_hikes(region)
+    
+  
+  
 
     
 end

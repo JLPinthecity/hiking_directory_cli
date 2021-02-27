@@ -7,13 +7,14 @@ class HikingDirectory::Region
     @region_name = region_name
     @region_url = region_url
     @number_of_trails = number_of_trails
+    save
   end
   
   def save
     @@all << self 
   end 
   
-  def all
+  def self.all
     @@all
   end
   

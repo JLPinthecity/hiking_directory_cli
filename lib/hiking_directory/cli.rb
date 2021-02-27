@@ -1,3 +1,4 @@
+require 'pry'
 class HikingDirectory::CLI 
   
   def call
@@ -38,14 +39,32 @@ class HikingDirectory::CLI
   def show_regions_in(chosen_state)
     state = @states[chosen_state - 1]
     HikingDirectory::Scraper.scrape_state_for_regions(state)
-      puts "Pick a region in #{state.name}:"
-      
+    regions = HikingDirectory::Region.all
+    
+      puts "Please pick the region to see trails in your area."
+    regions.each.with_index(1) do |region, index|
+      puts "#{index}. #{region.region_name} - #{region.number_of_trails}"
+    end
+    puts "Here are some top trails in your region..."
+      if valid_input(input, regions)
+        
+        
+          #srape region_url correllating with chosen region 
+          
+      else 
+        puts "Invalid entry, please try again."
+        list_states
+      end
+  end 
+    
+      #have to decide where/when to clear the regions all collection 
+    
       
     
       
    
     
-  end
+
   
   
   
