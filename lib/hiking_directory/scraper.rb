@@ -23,7 +23,7 @@ class HikingDirectory::Scraper
   end
   
   def self.scrape_hikes_in(region)
-    doc = Nokogiri::HTML(open("#{region.url}"))
+    doc = Nokogiri::HTML(open("#{region.region_url}"))
     hikes = doc.css("div.row div.col-lg-3.col-md-4.col-sm-6.card-container")
       hikes.each do |hike|
         link = hike.css("a").attr("href")
