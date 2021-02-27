@@ -1,6 +1,3 @@
-
-
-
 class HikingDirectory::CLI 
   
   def call
@@ -42,7 +39,7 @@ class HikingDirectory::CLI
     state = @states[chosen_state - 1]
     HikingDirectory::Scraper.scrape_state_for_regions(state)
       puts "Pick a region in #{state.name}:"
-      puts 
+      
       
     
       

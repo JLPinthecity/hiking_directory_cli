@@ -7,7 +7,7 @@ class HikingDirectory::Scraper
       states_cards.collect do |thing|
         name = thing.css("h3.dont-shrink.serif").text
         url = thing.css("a").attr("href").value
-        state = HikingDirectory::State.new(name, url)
+        HikingDirectory::State.new(name, url)
     end
   end 
   
@@ -18,8 +18,8 @@ class HikingDirectory::Scraper
         region_name = region.css("div.link").text
         region_url = region.css("a").attr("href").value
         number_of_trails = region.css("div.trails").text
-        
-           puts region_name 
+        HikingDirectory::Region.new(region_name, region_url, number_of_trails)
+      
       end
   end
 
