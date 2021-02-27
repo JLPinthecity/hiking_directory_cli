@@ -60,6 +60,16 @@ class HikingDirectory::CLI
       end
   end
   
+  def show_hikes_in(chosen_region)
+    region = @regions[chosen_region - 1]
+    HikingDirectory::Scraper.scrape_hikes_in(region)
+      puts "Please pick the trail you'd like to learn more about."
+        hikes.each.with_index(1) do |hike, index|
+          puts "#{index}. #{} - #{}"
+      end
+  end
+  end
+  
   
   
   
